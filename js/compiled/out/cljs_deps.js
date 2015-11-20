@@ -20,7 +20,7 @@ goog.addDependency("../reagent/impl/template.js", ['reagent.impl.template'], ['r
 goog.addDependency("../reagent/core.js", ['reagent.core'], ['reagent.impl.util', 'reagent.interop', 'reagent.ratom', 'cljs.core', 'cljsjs.react', 'reagent.impl.template', 'reagent.impl.batching', 'reagent.impl.component', 'reagent.debug']);
 goog.addDependency("../cljs/pprint.js", ['cljs.pprint'], ['goog.string', 'cljs.core', 'goog.string.StringBuffer', 'clojure.string']);
 goog.addDependency("../cljs/core/match.js", ['cljs.core.match'], ['cljs.core']);
-goog.addDependency("../frontend/devtools.js", ['frontend.devtools'], ['reagent.core', 'cljs.core', 'cljs.pprint', 'cljs.core.match']);
+goog.addDependency("../frontend/devtools.js", ['frontend.devtools'], ['com.rpl.specter', 'reagent.core', 'cljs.core', 'cljs.pprint', 'cljs.core.match']);
 goog.addDependency("../frontend/ui.js", ['frontend.ui'], ['reagent.core', 'cljs.core', 'cljs.pprint']);
 goog.addDependency("../frontend/core.js", ['frontend.core'], ['com.rpl.specter', 'hodgepodge.core', 'frontend.devtools', 'reagent.core', 'cljs.core', 'goog.history.EventType', 'frontend.ui', 'goog.history.Html5History', 'cljs.core.match', 'goog.events']);
 goog.addDependency("../cljs/core/async/impl/protocols.js", ['cljs.core.async.impl.protocols'], ['cljs.core']);
