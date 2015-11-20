@@ -71,7 +71,6 @@
            :on-connect
            (dispatch [:load (:model storage)])
 
-
            [:on-navigate token]
            (do
              (println "token =" token)
@@ -278,7 +277,7 @@
 (defonce history (doto (Html5History.)
                    (.setEnabled true)))
 
-(defonce model (r/atom (init)))
+(def model (r/atom (init)))
 (def dev-model (r/atom (devtools/init)))
 
 (defn main
