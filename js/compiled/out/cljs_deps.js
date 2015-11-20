@@ -19,9 +19,10 @@ goog.addDependency("../reagent/impl/component.js", ['reagent.impl.component'], [
 goog.addDependency("../reagent/impl/template.js", ['reagent.impl.template'], ['reagent.impl.util', 'reagent.interop', 'reagent.ratom', 'cljs.core', 'reagent.impl.batching', 'reagent.impl.component', 'reagent.debug', 'clojure.string']);
 goog.addDependency("../reagent/core.js", ['reagent.core'], ['reagent.impl.util', 'reagent.interop', 'reagent.ratom', 'cljs.core', 'cljsjs.react', 'reagent.impl.template', 'reagent.impl.batching', 'reagent.impl.component', 'reagent.debug']);
 goog.addDependency("../cljs/pprint.js", ['cljs.pprint'], ['goog.string', 'cljs.core', 'goog.string.StringBuffer', 'clojure.string']);
-goog.addDependency("../frontend/ui.js", ['frontend.ui'], ['reagent.core', 'cljs.core', 'cljs.pprint']);
 goog.addDependency("../cljs/core/match.js", ['cljs.core.match'], ['cljs.core']);
-goog.addDependency("../frontend/core.js", ['frontend.core'], ['com.rpl.specter', 'hodgepodge.core', 'reagent.core', 'cljs.core', 'goog.history.EventType', 'frontend.ui', 'goog.history.Html5History', 'cljs.core.match', 'goog.events']);
+goog.addDependency("../frontend/devtools.js", ['frontend.devtools'], ['reagent.core', 'cljs.core', 'cljs.pprint', 'cljs.core.match']);
+goog.addDependency("../frontend/ui.js", ['frontend.ui'], ['reagent.core', 'cljs.core', 'cljs.pprint']);
+goog.addDependency("../frontend/core.js", ['frontend.core'], ['com.rpl.specter', 'hodgepodge.core', 'frontend.devtools', 'reagent.core', 'cljs.core', 'goog.history.EventType', 'frontend.ui', 'goog.history.Html5History', 'cljs.core.match', 'goog.events']);
 goog.addDependency("../cljs/core/async/impl/protocols.js", ['cljs.core.async.impl.protocols'], ['cljs.core']);
 goog.addDependency("../cljs/core/async/impl/buffers.js", ['cljs.core.async.impl.buffers'], ['cljs.core', 'cljs.core.async.impl.protocols']);
 goog.addDependency("../cljs/core/async/impl/dispatch.js", ['cljs.core.async.impl.dispatch'], ['cljs.core', 'cljs.core.async.impl.buffers', 'goog.async.nextTick']);
