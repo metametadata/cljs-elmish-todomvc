@@ -7,7 +7,10 @@ goog.require('cljs.pprint');
  * Model must be a ratom.
  *   Control can be a non-pure function.
  *   View-model, view and reconcile must be pure functions.
- *   Returns a map with :view, :dispatch-signal, :dispatch-action (dispatch functions are exposed mainly for debugging).
+ *   Returns a map with:
+ *    :view,
+ *    :dispatch-signal (it can be used to dispatch signal not only from the view),
+ *    :dispatch-action (this is exposed mainly for debugging).
  * 
  *   Automatically fires an :on-connect signal.
  * 
@@ -61,4 +64,4 @@ return result;
 });
 });
 
-//# sourceMappingURL=ui.js.map?rel=1447986930458
+//# sourceMappingURL=ui.js.map?rel=1448041701068
