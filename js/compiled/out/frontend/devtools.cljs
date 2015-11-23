@@ -52,21 +52,21 @@
   [component-control]
   (fn control
     [model signal dispatch]
-    ;(println signal ": model = " model)
     (match signal
            :on-connect
            (if (:persist? model)
-             ; simply replay all actions loaded from storage
              (dispatch :replay)
 
-             ; previously developer decided to not persist a session, but it's loaded by middleware anyway..
+             ; developer decided to not persist a session, but it's loaded by middleware anyway..
              (do
                ; so let's clear the session for a fresh start..
                (dispatch :clear-history)
 
                ; and let component handle its initial signal
-               (if-not (nil? (:initial-signal model))
-                 (control model [:component (:initial-signal model)] dispatch))))
+               ; note: outdated model is passed, but it's safe because :component key hasn't changed after clearing
+               (let [s (:initial-signal model)]
+                 (when-not (nil? s)
+                   (control model [:component s] dispatch)))))
 
            [:on-toggle-action id]
            (do
@@ -241,12 +241,13 @@
   ; blacklisted keys are provided by component init and should not be overwritten by middleware
   ; (otherwise, on hot reload, we will not see changes after after modifying component init code)
   ; thus they also don't need to be saved
-  (let [non-persisted-keys #{:initial-model :initial-signal}]
-    (ui/connect (init component-initial)
+  (let [non-persisted-keys #{:initial-model :initial-signal}
+        [_ initial-signal :as initial] (init component-initial)]
+    (ui/connect initial
                 (new-view-model component-view-model)
                 (new-view component-view)
                 (-> (new-control component-control)
-                    (persistence/wrap-control :on-connect storage :devtools non-persisted-keys)
+                    (persistence/wrap-control initial-signal storage :devtools non-persisted-keys)
                     ui/wrap-log-signals)
                 (-> (new-reconcile component-reconcile)
                     (persistence/wrap-reconcile storage :devtools non-persisted-keys)
