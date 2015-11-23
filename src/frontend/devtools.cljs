@@ -54,19 +54,17 @@
     [model signal dispatch]
     (match signal
            :on-connect
-           (if (:persist? model)
-             (dispatch :replay)
+           (do
+             (if (:persist? model)
+               (dispatch :replay)
 
-             ; developer decided to not persist a session, but it's loaded by middleware anyway..
-             (do
+               ; developer decided to not persist a session, but it's loaded by middleware anyway
                ; so let's clear the session for a fresh start..
-               (dispatch :clear-history)
+               (dispatch :clear-history))
 
-               ; and let component handle its initial signal
-               ; note: outdated model is passed, but it's safe because :component key hasn't changed after clearing
-               (let [s (:initial-signal model)]
-                 (when-not (nil? s)
-                   (control model [:component s] dispatch)))))
+             ; let component handle its initial signal
+             ; note: outdated model is passed, but it's safe because :component key hasn't changed after clearing
+             (control model [:component-initial (:initial-signal model)] dispatch))
 
            [:on-toggle-action id]
            (do
@@ -83,6 +81,12 @@
            (do
              (dispatch :clear-history)
              (dispatch :replay))
+
+           [:component-initial s]
+           ; initial component signals should not be handled in case debug session is loaded from storage
+           (when (and (not (:persist? model))
+                      (not (nil? s)))
+             (control model [:component s] dispatch))
 
            [:component s]
            (let [[signal-id _ :as signal-event] (-signal-event (:next-signal-id model) s)]

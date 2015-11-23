@@ -29,17 +29,16 @@
                               (-> todos/reconcile
                                   (persistence/wrap-reconcile storage :model nil))
                               storage)]
-    ; routing
-    (letfn [(dispatch-navigate
-                [token]
-                ((:dispatch-signal app) [:component [:on-navigate token]]))]
-        ; clear listeners in case of hotloading
-        (goog.events/removeAll history)
+    ; clear listeners in case of hotloading
+    (goog.events/removeAll history)
 
-        ; start routing
-        (goog.events/listen history EventType/NAVIGATE #(dispatch-navigate (.-token %)))
-        (dispatch-navigate (.getToken history)))
+    ; start routing
+    (goog.events/listen history EventType/NAVIGATE #((:dispatch-signal app) [:component [:on-navigate (.-token %)]]))
 
+    ; use :component-initial to notify that this signal should be bypassed when debug session is loaded from storage
+    ((:dispatch-signal app) [:component-initial [:on-navigate (.getToken history)]])
+
+    ; render
     (r/render-component [(:view app)] (. js/document (getElementById "root")))
     app))
 
