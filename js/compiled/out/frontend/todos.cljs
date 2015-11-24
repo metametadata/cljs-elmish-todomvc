@@ -66,12 +66,14 @@
     (match signal
            :on-init
            (do
-             ; start routing
-             (goog.events/listen history EventType/NAVIGATE #(dispatch [:navigate (.-token %)]))
+             ; dispatch the current route
              (dispatch [:navigate (.getToken history)])
 
-             ; just for demonstration
              (dispatch :sample-action))
+
+           ; this signal must come from the component owner which listens to history events
+           [:on-navigate token]
+           (dispatch [:navigate token])
 
            [:on-update-field val] (dispatch [:update-field val])
            :on-add (dispatch :add)
@@ -85,74 +87,67 @@
            :on-clear-completed (dispatch :clear-completed))))
 
 ;;;;;;;;;;;;;;;;;;;;;;;; Reconcile
-(defn new-reconcile
-  [history]
-  (fn reconcile
-    [model action]
-    (match action
-           ; do nothing, only for a demo
-           :sample-action model
+(defn reconcile
+  [model action]
+  (match action
+         ; do nothing, only for a demo
+         :sample-action model
 
-           [:navigate token]
-           (do
-             (println " token =" (pr-str token))
-             (when-let [match (->> visibility-spec
-                                   (filter #(= (:token %) token))
-                                   first)]
-               (println "  route match =" (pr-str match))
-               (assoc model :visibility (:key match)))
+         [:navigate token]
+         (do
+           (println " token =" (pr-str token))
+           (when-let [match (->> visibility-spec
+                                 (filter #(= (:token %) token))
+                                 first)]
+             (println "  route match =" (pr-str match))
+             (assoc model :visibility (:key match))))
 
-             ; TODO:
-             ; Actions must be pure, but this is an exception to the rule:
-             ; we need to update the address bar because action could have come from the devtools during replay.
-             #_(.replaceToken history token))
+         [:update-field val]
+         (assoc model :field val)
 
-           [:update-field val]
-           (assoc model :field val)
+         :add
+         (let [title (clojure.string/trim (:field model))]
+           (if (clojure.string/blank? title)
+             model
+             (-> model
+                 (assoc :field "")
+                 (update :next-id inc)
+                 (update :todos concat [(init-todo (:next-id model) title)]))))
 
-           :add
-           (let [title (clojure.string/trim (:field model))]
-             (if (clojure.string/blank? title)
-               model
-               (-> model
-                   (assoc :field "")
-                   (update :next-id inc)
-                   (update :todos concat [(init-todo (:next-id model) title)]))))
+         [:toggle id]
+         (update-todo model id update :completed? not)
 
-           [:toggle id]
-           (update-todo model id update :completed? not)
+         :toggle-all
+         (let [all-completed? (every? :completed? (:todos model))]
+           (update-todos model assoc :completed? (not all-completed?)))
 
-           :toggle-all
-           (let [all-completed? (every? :completed? (:todos model))]
-             (update-todos model assoc :completed? (not all-completed?)))
+         [:start-editing id]
+         (-> model
+             (update-todos #(assoc % :editing? (= (:id %) id)))
+             (update-todo id #(assoc % :original-title (:title %))))
 
-           [:start-editing id]
-           (-> model
-               (update-todos #(assoc % :editing? (= (:id %) id)))
-               (update-todo id #(assoc % :original-title (:title %))))
+         [:stop-editing id]
+         (let [title (-> (find-todo model id)
+                         :title
+                         clojure.string/trim)]
+           (if (clojure.string/blank? title)
+             (remove-todo model id)
+             (update-todos model #(assoc % :editing? false
+                                           :original-title ""))))
 
-           [:stop-editing id]
-           (let [title (-> (find-todo model id)
-                           :title
-                           clojure.string/trim)]
-             (if (clojure.string/blank? title)
-               (remove-todo model id)
-               (update-todos model #(assoc % :editing? false
-                                             :original-title ""))))
+         [:cancel-editing id]
+         (update-todo model id #(assoc % :editing? false
+                                         :title (:original-title %)
+                                         :original-title ""))
 
-           [:cancel-editing id]
-           (update-todo model id #(assoc % :editing? false
-                                           :title (:original-title %)
-                                           :original-title ""))
+         [:update-todo id val]
+         (update-todo model id assoc :title val)
 
-           [:update-todo id val]
-           (update-todo model id assoc :title val)
+         [:remove id]
+         (remove-todo model id)
 
-           [:remove id]
-           (remove-todo model id)
-
-           :clear-completed
-           (remove-todos model :completed?))))
+         :clear-completed
+         (remove-todos model :completed?)))
 
 ;;;;;;;;;;;;;;;;;;;;;;;; View model
 (defn view-model

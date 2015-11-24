@@ -14,7 +14,7 @@
         (if (not= storage-model :not-found)
           (let [new-model (merge storage-model (select-keys model load-blacklist))]
             ; update model
-            (dispatch [:reset-from-storage new-model])
+            (dispatch [::reset-from-storage new-model])
 
             ; also let component handle the loaded state
             (control new-model signal dispatch))
@@ -31,7 +31,7 @@
   (fn wrapped-reconcile
     [model action]
     (match action
-           [:reset-from-storage data]
+           [::reset-from-storage data]
            data
 
            :else
