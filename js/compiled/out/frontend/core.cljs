@@ -28,7 +28,7 @@
                               todos/view
                               (-> (todos/new-control history)
                                   (persistence/wrap-control todos-initial-signal storage :model nil))
-                              (-> todos/reconcile
+                              (-> (todos/new-reconcile history)
                                   (persistence/wrap-reconcile storage :model nil))
                               storage)]
 
