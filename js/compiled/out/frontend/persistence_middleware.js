@@ -22,42 +22,42 @@ return control.call(null,new_model,signal,dispatch);
 frontend.persistence_middleware._wrap_reconcile = (function frontend$persistence_middleware$_wrap_reconcile(reconcile,storage,key,save_blacklist){
 return (function frontend$persistence_middleware$_wrap_reconcile_$_wrapped_reconcile(model,action){
 try{if((cljs.core.vector_QMARK_.call(null,action)) && ((cljs.core.count.call(null,action) === 2))){
-try{var action_0__21310 = cljs.core.nth.call(null,action,(0));
-if(cljs.core.keyword_identical_QMARK_.call(null,action_0__21310,new cljs.core.Keyword("frontend.persistence-middleware","reset-from-storage","frontend.persistence-middleware/reset-from-storage",-1233138177))){
+try{var action_0__21309 = cljs.core.nth.call(null,action,(0));
+if(cljs.core.keyword_identical_QMARK_.call(null,action_0__21309,new cljs.core.Keyword("frontend.persistence-middleware","reset-from-storage","frontend.persistence-middleware/reset-from-storage",-1233138177))){
 var data = cljs.core.nth.call(null,action,(1));
 return data;
 } else {
 throw cljs.core.match.backtrack;
 
 }
-}catch (e21313){if((e21313 instanceof Error)){
-var e__20496__auto__ = e21313;
-if((e__20496__auto__ === cljs.core.match.backtrack)){
+}catch (e21312){if((e21312 instanceof Error)){
+var e__20495__auto__ = e21312;
+if((e__20495__auto__ === cljs.core.match.backtrack)){
 throw cljs.core.match.backtrack;
 } else {
-throw e__20496__auto__;
+throw e__20495__auto__;
 }
 } else {
-throw e21313;
+throw e21312;
 
 }
 }} else {
 throw cljs.core.match.backtrack;
 
 }
-}catch (e21312){if((e21312 instanceof Error)){
-var e__20496__auto__ = e21312;
-if((e__20496__auto__ === cljs.core.match.backtrack)){
+}catch (e21311){if((e21311 instanceof Error)){
+var e__20495__auto__ = e21311;
+if((e__20495__auto__ === cljs.core.match.backtrack)){
 var result = reconcile.call(null,model,action);
 var whitelist = clojure.set.difference.call(null,cljs.core.set.call(null,cljs.core.keys.call(null,result)),save_blacklist);
 cljs.core.assoc_BANG_.call(null,storage,key,cljs.core.select_keys.call(null,result,whitelist));
 
 return result;
 } else {
-throw e__20496__auto__;
+throw e__20495__auto__;
 }
 } else {
-throw e21312;
+throw e21311;
 
 }
 }});
@@ -70,4 +70,4 @@ frontend.persistence_middleware.wrap = (function frontend$persistence_middleware
 return cljs.core.update.call(null,cljs.core.update.call(null,spec,new cljs.core.Keyword(null,"control","control",1892578036),frontend.persistence_middleware._wrap_control,storage,key,blacklist),new cljs.core.Keyword(null,"reconcile","reconcile",-728661830),frontend.persistence_middleware._wrap_reconcile,storage,key,blacklist);
 });
 
-//# sourceMappingURL=persistence_middleware.js.map?rel=1449078996076
+//# sourceMappingURL=persistence_middleware.js.map?rel=1449606070325

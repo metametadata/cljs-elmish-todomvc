@@ -3,8 +3,8 @@
   (:require [cljs.core.match :refer-macros [match]]
             [reagent.core :as r]
             [com.rpl.specter :as s]
-            [goog.events]
-            [goog.history.EventType :as EventType]))
+            [frontend.ui :as ui])
+  (:require-macros [reagent.ratom :refer [reaction]]))
 
 ;;;;;;;;;;;;;;;;;;;;;;;; Model
 (defn -init-todo
@@ -17,7 +17,9 @@
 
 (defn init
   []
-  {:field      ""
+  {:lolka      123
+
+   :field      ""
    :visibility :all
    ; list of maps {:id :title :completed :editing}
    :todos      (list (-init-todo 1 "Finish this project")
@@ -170,21 +172,27 @@
 ;;;;;;;;;;;;;;;;;;;;;;;; View model
 (defn view-model
   [model]
-  (assoc model
-    :todos (filter (case (:visibility model)
-                     :all (constantly true)
-                     :active (complement :completed?)
-                     :completed :completed?)
-                   (:todos model))
-    :has-todos? (-> (:todos model) count pos?)
-    :active-count (->> (:todos model)
-                       (filter (complement :completed?))
-                       count)
-    :has-completed-todos? (->> (:todos model)
-                               (filter :completed?)
-                               count
-                               pos?)
-    :all-completed? (every? :completed? (:todos model))))
+  ; reactions are extracted for better perfromance, e.g.:
+  ; when input field changes most reactions will not be recalculated,
+  ; because todos stay the same
+  (let [todos (reaction (:todos @model))
+        visibility (reaction (:visibility @model))]
+    (-> model
+        (ui/track-keys [:field :visibility])
+        (assoc :has-todos? (reaction (-> @todos count pos?))
+               :todos (reaction (filter (case @visibility
+                                          :all (constantly true)
+                                          :active (complement :completed?)
+                                          :completed :completed?)
+                                        @todos))
+               :all-completed? (reaction (every? :completed? @todos))
+               :active-count (reaction (->> @todos
+                                            (filter (complement :completed?))
+                                            count))
+               :has-completed-todos? (reaction (->> @todos
+                                                    (filter :completed?)
+                                                    count
+                                                    pos?))))))
 
 ;;;;;;;;;;;;;;;;;;;;;;;; View
 (defn -enter-key?
@@ -270,21 +278,21 @@
      [:button.clear-completed {:on-click #(dispatch :on-clear-completed)} "Clear completed"])])
 
 (defn view
-  [{:keys [field todos has-todos? active-count has-completed-todos? all-completed? visibility] :as _view-model_}
+  [{:keys [field has-todos? todos all-completed? active-count has-completed-todos? visibility] :as _view-model_}
    dispatch]
   [:section.todoapp
-   [-view-header field dispatch]
+   [-view-header @field dispatch]
 
    (if has-todos?
      [:div
-      [-view-todo-list todos all-completed? dispatch]
-      [-view-footer active-count has-completed-todos? visibility dispatch]])])
+      [-view-todo-list @todos @all-completed? dispatch]
+      [-view-footer @active-count @has-completed-todos? @visibility dispatch]])])
 
 ;;;;;;;;;;;;;;;;;;;;;;;; Spec
 (defn new-spec
   [history]
-  {:init           init
-   :view-model     view-model
-   :view           view
-   :control        (new-control history)
-   :reconcile      (new-reconcile history)})
+  {:init       init
+   :view-model view-model
+   :view       view
+   :control    (new-control history)
+   :reconcile  (new-reconcile history)})
