@@ -70,4 +70,4 @@ frontend.persistence_middleware.wrap = (function frontend$persistence_middleware
 return cljs.core.update.call(null,cljs.core.update.call(null,spec,new cljs.core.Keyword(null,"control","control",1892578036),frontend.persistence_middleware._wrap_control,storage,key,blacklist),new cljs.core.Keyword(null,"reconcile","reconcile",-728661830),frontend.persistence_middleware._wrap_reconcile,storage,key,blacklist);
 });
 
-//# sourceMappingURL=persistence_middleware.js.map?rel=1449606070325
+//# sourceMappingURL=persistence_middleware.js.map?rel=1452529990559
