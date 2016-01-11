@@ -13,10 +13,10 @@ goog.require('goog.events');
 cljs.core.enable_console_print_BANG_.call(null);
 if(typeof frontend.core.history !== 'undefined'){
 } else {
-frontend.core.history = (function (){var G__24388 = (new goog.history.Html5History());
-G__24388.setEnabled(true);
+frontend.core.history = (function (){var G__23386 = (new goog.history.Html5History());
+G__23386.setEnabled(true);
 
-return G__24388;
+return G__23386;
 })();
 }
 frontend.core.main = (function frontend$core$main(){
@@ -27,8 +27,8 @@ goog.events.removeAll(frontend.core.history);
 var storage = hodgepodge.core.local_storage;
 var app = frontend.ui.connect_reactive_reagent.call(null,frontend.ui.wrap_log.call(null,frontend.devtools.new_spec.call(null,frontend.ui.wrap_log.call(null,frontend.persistence_middleware.wrap.call(null,frontend.todos.new_spec.call(null,frontend.core.history),storage,new cljs.core.Keyword(null,"model","model",331153215),null),"   [app]"),storage,new cljs.core.Keyword(null,"devtools","devtools",-1870878518)),"[devtools]"),cljs.core.PersistentVector.EMPTY);
 goog.events.listen(frontend.core.history,goog.history.EventType.NAVIGATE,((function (storage,app){
-return (function (p1__24389_SHARP_){
-return new cljs.core.Keyword(null,"dispatch-signal","dispatch-signal",205544591).cljs$core$IFn$_invoke$arity$1(app).call(null,new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"component","component",1555936782),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"on-navigate","on-navigate",-297227908),p1__24389_SHARP_.token], null)], null));
+return (function (p1__23387_SHARP_){
+return new cljs.core.Keyword(null,"dispatch-signal","dispatch-signal",205544591).cljs$core$IFn$_invoke$arity$1(app).call(null,new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"component","component",1555936782),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"on-navigate","on-navigate",-297227908),p1__23387_SHARP_.token], null)], null));
 });})(storage,app))
 );
 
@@ -41,4 +41,4 @@ frontend.core.on_js_reload = (function frontend$core$on_js_reload(){
 return null;
 });
 
-//# sourceMappingURL=core.js.map?rel=1450304782103
+//# sourceMappingURL=core.js.map?rel=1452522514828
