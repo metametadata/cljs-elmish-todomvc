@@ -2,62 +2,73 @@
 goog.provide('frontend.persistence_middleware');
 goog.require('cljs.core');
 goog.require('cljs.core.match');
-frontend.persistence_middleware._wrap_control = (function frontend$persistence_middleware$_wrap_control(control,storage,key,load_blacklist){
+frontend.persistence_middleware._wrap_control = (function frontend$persistence_middleware$_wrap_control(control,storage,key,blacklist){
 return (function frontend$persistence_middleware$_wrap_control_$_wrapped_control(model,signal,dispatch){
+var save = (function frontend$persistence_middleware$_wrap_control_$_wrapped_control_$_save(result){
+var save_whitelist = clojure.set.difference.call(null,cljs.core.set.call(null,cljs.core.keys.call(null,result)),blacklist);
+return cljs.core.assoc_BANG_.call(null,storage,key,cljs.core.select_keys.call(null,result,save_whitelist));
+});
+var dispatch_and_save = (function frontend$persistence_middleware$_wrap_control_$_wrapped_control_$_dispatch_and_save(action){
+var result = dispatch.call(null,action);
+save.call(null,result);
+
+return result;
+});
+var save_and_control = (function frontend$persistence_middleware$_wrap_control_$_wrapped_control_$_save_and_control(model__$1,signal__$1){
+save.call(null,model__$1);
+
+return control.call(null,model__$1,signal__$1,dispatch_and_save);
+});
 if(!(cljs.core._EQ_.call(null,signal,new cljs.core.Keyword(null,"on-connect","on-connect",-1148973056)))){
-return control.call(null,model,signal,dispatch);
+return save_and_control.call(null,model,signal);
 } else {
 var storage_model = cljs.core.get.call(null,storage,key,new cljs.core.Keyword(null,"not-found","not-found",-629079980));
 if(cljs.core._EQ_.call(null,storage_model,new cljs.core.Keyword(null,"not-found","not-found",-629079980))){
-return control.call(null,model,signal,dispatch);
+return save_and_control.call(null,model,signal);
 } else {
-var new_model = cljs.core.merge.call(null,storage_model,cljs.core.select_keys.call(null,model,load_blacklist));
+var new_model = cljs.core.merge.call(null,storage_model,cljs.core.select_keys.call(null,model,blacklist));
 dispatch.call(null,new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword("frontend.persistence-middleware","reset-from-storage","frontend.persistence-middleware/reset-from-storage",-1233138177),new_model], null));
 
-return control.call(null,new_model,signal,dispatch);
+return control.call(null,new_model,signal,dispatch_and_save);
 }
 }
 });
 });
-frontend.persistence_middleware._wrap_reconcile = (function frontend$persistence_middleware$_wrap_reconcile(reconcile,storage,key,save_blacklist){
+frontend.persistence_middleware._wrap_reconcile = (function frontend$persistence_middleware$_wrap_reconcile(reconcile){
 return (function frontend$persistence_middleware$_wrap_reconcile_$_wrapped_reconcile(model,action){
 try{if((cljs.core.vector_QMARK_.call(null,action)) && ((cljs.core.count.call(null,action) === 2))){
-try{var action_0__21309 = cljs.core.nth.call(null,action,(0));
-if(cljs.core.keyword_identical_QMARK_.call(null,action_0__21309,new cljs.core.Keyword("frontend.persistence-middleware","reset-from-storage","frontend.persistence-middleware/reset-from-storage",-1233138177))){
+try{var action_0__101026 = cljs.core.nth.call(null,action,(0));
+if(cljs.core.keyword_identical_QMARK_.call(null,action_0__101026,new cljs.core.Keyword("frontend.persistence-middleware","reset-from-storage","frontend.persistence-middleware/reset-from-storage",-1233138177))){
 var data = cljs.core.nth.call(null,action,(1));
 return data;
 } else {
 throw cljs.core.match.backtrack;
 
 }
-}catch (e21312){if((e21312 instanceof Error)){
-var e__20495__auto__ = e21312;
+}catch (e101029){if((e101029 instanceof Error)){
+var e__20495__auto__ = e101029;
 if((e__20495__auto__ === cljs.core.match.backtrack)){
 throw cljs.core.match.backtrack;
 } else {
 throw e__20495__auto__;
 }
 } else {
-throw e21312;
+throw e101029;
 
 }
 }} else {
 throw cljs.core.match.backtrack;
 
 }
-}catch (e21311){if((e21311 instanceof Error)){
-var e__20495__auto__ = e21311;
+}catch (e101028){if((e101028 instanceof Error)){
+var e__20495__auto__ = e101028;
 if((e__20495__auto__ === cljs.core.match.backtrack)){
-var result = reconcile.call(null,model,action);
-var whitelist = clojure.set.difference.call(null,cljs.core.set.call(null,cljs.core.keys.call(null,result)),save_blacklist);
-cljs.core.assoc_BANG_.call(null,storage,key,cljs.core.select_keys.call(null,result,whitelist));
-
-return result;
+return reconcile.call(null,model,action);
 } else {
 throw e__20495__auto__;
 }
 } else {
-throw e21311;
+throw e101028;
 
 }
 }});
@@ -67,7 +78,7 @@ throw e21311;
  *   Blacklist should contain model keys which will not be saved and loaded.
  */
 frontend.persistence_middleware.wrap = (function frontend$persistence_middleware$wrap(spec,storage,key,blacklist){
-return cljs.core.update.call(null,cljs.core.update.call(null,spec,new cljs.core.Keyword(null,"control","control",1892578036),frontend.persistence_middleware._wrap_control,storage,key,blacklist),new cljs.core.Keyword(null,"reconcile","reconcile",-728661830),frontend.persistence_middleware._wrap_reconcile,storage,key,blacklist);
+return cljs.core.update.call(null,cljs.core.update.call(null,spec,new cljs.core.Keyword(null,"control","control",1892578036),frontend.persistence_middleware._wrap_control,storage,key,blacklist),new cljs.core.Keyword(null,"reconcile","reconcile",-728661830),frontend.persistence_middleware._wrap_reconcile);
 });
 
-//# sourceMappingURL=persistence_middleware.js.map?rel=1452529990559
+//# sourceMappingURL=persistence_middleware.js.map?rel=1452628354260

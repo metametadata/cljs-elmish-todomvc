@@ -16,8 +16,8 @@ var router = frontend.router.__GT_Router.call(null);
 var storage = hodgepodge.core.local_storage;
 var app = frontend.ui.connect_reactive_reagent.call(null,frontend.ui.wrap_log.call(null,frontend.devtools.new_spec.call(null,frontend.ui.wrap_log.call(null,frontend.persistence_middleware.wrap.call(null,frontend.todos.new_spec.call(null,router),storage,new cljs.core.Keyword(null,"model","model",331153215),null),"   [app]"),storage,new cljs.core.Keyword(null,"devtools","devtools",-1870878518)),"[devtools]"),cljs.core.PersistentVector.EMPTY);
 frontend.router.start_listening.call(null,router,((function (router,storage,app){
-return (function (p1__87895_SHARP_){
-return new cljs.core.Keyword(null,"dispatch-signal","dispatch-signal",205544591).cljs$core$IFn$_invoke$arity$1(app).call(null,new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"component","component",1555936782),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"on-navigate","on-navigate",-297227908),p1__87895_SHARP_], null)], null));
+return (function (p1__102541_SHARP_){
+return new cljs.core.Keyword(null,"dispatch-signal","dispatch-signal",205544591).cljs$core$IFn$_invoke$arity$1(app).call(null,new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"component","component",1555936782),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"on-navigate","on-navigate",-297227908),p1__102541_SHARP_], null)], null));
 });})(router,storage,app))
 );
 
@@ -30,4 +30,4 @@ frontend.core.on_js_reload = (function frontend$core$on_js_reload(){
 return null;
 });
 
-//# sourceMappingURL=core.js.map?rel=1452601380151
+//# sourceMappingURL=core.js.map?rel=1452631154972
