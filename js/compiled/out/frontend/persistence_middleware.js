@@ -27,7 +27,7 @@ if(cljs.core._EQ_.call(null,storage_model,new cljs.core.Keyword(null,"not-found"
 return save_and_control.call(null,model,signal);
 } else {
 var new_model = cljs.core.merge.call(null,storage_model,cljs.core.select_keys.call(null,model,blacklist));
-dispatch.call(null,new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword("frontend.persistence-middleware","reset-from-storage","frontend.persistence-middleware/reset-from-storage",-1233138177),new_model], null));
+dispatch.call(null,new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword("frontend.persistence-middleware","-reset-from-storage","frontend.persistence-middleware/-reset-from-storage",635771804),new_model], null));
 
 return control.call(null,new_model,signal,dispatch_and_save);
 }
@@ -37,38 +37,38 @@ return control.call(null,new_model,signal,dispatch_and_save);
 frontend.persistence_middleware._wrap_reconcile = (function frontend$persistence_middleware$_wrap_reconcile(reconcile){
 return (function frontend$persistence_middleware$_wrap_reconcile_$_wrapped_reconcile(model,action){
 try{if((cljs.core.vector_QMARK_.call(null,action)) && ((cljs.core.count.call(null,action) === 2))){
-try{var action_0__101026 = cljs.core.nth.call(null,action,(0));
-if(cljs.core.keyword_identical_QMARK_.call(null,action_0__101026,new cljs.core.Keyword("frontend.persistence-middleware","reset-from-storage","frontend.persistence-middleware/reset-from-storage",-1233138177))){
+try{var action_0__107345 = cljs.core.nth.call(null,action,(0));
+if(cljs.core.keyword_identical_QMARK_.call(null,action_0__107345,new cljs.core.Keyword("frontend.persistence-middleware","-reset-from-storage","frontend.persistence-middleware/-reset-from-storage",635771804))){
 var data = cljs.core.nth.call(null,action,(1));
 return data;
 } else {
 throw cljs.core.match.backtrack;
 
 }
-}catch (e101029){if((e101029 instanceof Error)){
-var e__20495__auto__ = e101029;
+}catch (e107348){if((e107348 instanceof Error)){
+var e__20495__auto__ = e107348;
 if((e__20495__auto__ === cljs.core.match.backtrack)){
 throw cljs.core.match.backtrack;
 } else {
 throw e__20495__auto__;
 }
 } else {
-throw e101029;
+throw e107348;
 
 }
 }} else {
 throw cljs.core.match.backtrack;
 
 }
-}catch (e101028){if((e101028 instanceof Error)){
-var e__20495__auto__ = e101028;
+}catch (e107347){if((e107347 instanceof Error)){
+var e__20495__auto__ = e107347;
 if((e__20495__auto__ === cljs.core.match.backtrack)){
 return reconcile.call(null,model,action);
 } else {
 throw e__20495__auto__;
 }
 } else {
-throw e101028;
+throw e107347;
 
 }
 }});
@@ -81,4 +81,4 @@ frontend.persistence_middleware.wrap = (function frontend$persistence_middleware
 return cljs.core.update.call(null,cljs.core.update.call(null,spec,new cljs.core.Keyword(null,"control","control",1892578036),frontend.persistence_middleware._wrap_control,storage,key,blacklist),new cljs.core.Keyword(null,"reconcile","reconcile",-728661830),frontend.persistence_middleware._wrap_reconcile);
 });
 
-//# sourceMappingURL=persistence_middleware.js.map?rel=1452628354260
+//# sourceMappingURL=persistence_middleware.js.map?rel=1452717130752

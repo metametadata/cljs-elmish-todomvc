@@ -14,13 +14,7 @@ cljs.core.println.call(null,"Hi.");
 
 var history = frontend.routing.__GT_History.call(null);
 var storage = hodgepodge.core.local_storage;
-var app = frontend.ui.connect_reactive_reagent.call(null,frontend.ui.wrap_log.call(null,frontend.devtools.new_spec.call(null,frontend.ui.wrap_log.call(null,frontend.persistence_middleware.wrap.call(null,frontend.todos.new_spec.call(null,history),storage,new cljs.core.Keyword(null,"model","model",331153215),null),"   [app]"),storage,new cljs.core.Keyword(null,"devtools","devtools",-1870878518)),"[devtools]"),cljs.core.PersistentVector.EMPTY);
-frontend.routing.start_listening.call(null,history,((function (history,storage,app){
-return (function (p1__103382_SHARP_){
-return new cljs.core.Keyword(null,"dispatch-signal","dispatch-signal",205544591).cljs$core$IFn$_invoke$arity$1(app).call(null,new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"component","component",1555936782),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"on-navigate","on-navigate",-297227908),p1__103382_SHARP_], null)], null));
-});})(history,storage,app))
-);
-
+var app = frontend.ui.connect_reactive_reagent.call(null,frontend.ui.wrap_log.call(null,frontend.devtools.new_spec.call(null,frontend.ui.wrap_log.call(null,frontend.persistence_middleware.wrap.call(null,frontend.routing.wrap_routing.call(null,frontend.todos.spec,history),storage,new cljs.core.Keyword(null,"model","model",331153215),null),"   [app]"),storage,new cljs.core.Keyword(null,"devtools","devtools",-1870878518)),"[devtools]"),cljs.core.PersistentVector.EMPTY);
 reagent.core.render_component.call(null,new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"view","view",1247994814).cljs$core$IFn$_invoke$arity$1(app)], null),document.getElementById("root"));
 
 return app;
@@ -30,4 +24,4 @@ frontend.core.on_js_reload = (function frontend$core$on_js_reload(){
 return null;
 });
 
-//# sourceMappingURL=core.js.map?rel=1452715031524
+//# sourceMappingURL=core.js.map?rel=1452717532627
