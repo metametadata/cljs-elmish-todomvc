@@ -1,4 +1,4 @@
-; Devtools component. It is expected to be used with ui/connect-reactive-reagent.
+; Devtools middleware. It is expected to be used with ui/connect-reactive-reagent.
 (ns frontend.devtools
   (:require [frontend.ui :as ui]
             [reagent.core :as r]
@@ -10,8 +10,9 @@
 ;;;;;;;;;;;;;;;;;;; Init
 (defn -wrap-init
   [component-init]
-  (fn init []
-    (let [component-model (component-init)]
+  (fn init
+    [& args]
+    (let [component-model (apply component-init args)]
       {:component      component-model
        :initial-model  component-model
 
@@ -266,7 +267,7 @@
 
 (defn -wrap-view
   [component-view]
-  (fn devtools-view
+  (fn view
     [view-model dispatch]
     [:div
      [component-view (:component-view-model view-model) dispatch]
