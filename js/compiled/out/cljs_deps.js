@@ -23,7 +23,7 @@ goog.addDependency("../reagent/core.js", ['reagent.core'], ['reagent.impl.util',
 goog.addDependency("../cljs/pprint.js", ['cljs.pprint'], ['goog.string', 'cljs.core', 'goog.string.StringBuffer', 'clojure.string']);
 goog.addDependency("../frontend/ui.js", ['frontend.ui'], ['reagent.core', 'cljs.core', 'cljs.pprint']);
 goog.addDependency("../frontend/devtools.js", ['frontend.devtools'], ['com.rpl.specter', 'frontend.persistence_middleware', 'reagent.core', 'cljs.core', 'frontend.ui', 'cljs.core.match']);
-goog.addDependency("../frontend/routing.js", ['frontend.routing'], ['cljs.core', 'goog.history.EventType', 'goog.history.Html5History', 'cljs.core.match', 'goog.events']);
+goog.addDependency("../frontend/routing.js", ['frontend.routing'], ['frontend.devtools', 'cljs.core', 'goog.history.EventType', 'goog.history.Html5History', 'cljs.core.match', 'goog.events']);
 goog.addDependency("../frontend/todos.js", ['frontend.todos'], ['com.rpl.specter', 'frontend.devtools', 'reagent.core', 'cljs.core', 'frontend.ui', 'frontend.routing', 'cljs.core.match']);
 goog.addDependency("../frontend/core.js", ['frontend.core'], ['frontend.persistence_middleware', 'hodgepodge.core', 'frontend.devtools', 'reagent.core', 'cljs.core', 'frontend.todos', 'frontend.ui', 'frontend.routing']);
 goog.addDependency("../cljs/core/async/impl/protocols.js", ['cljs.core.async.impl.protocols'], ['cljs.core']);
