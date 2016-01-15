@@ -78,10 +78,10 @@ throw cljs.core.missing_protocol.call(null,"HistoryProtocol.replace-token",this$
 
 if(typeof frontend.routing._goog_history !== 'undefined'){
 } else {
-frontend.routing._goog_history = (function (){var G__50873 = (new goog.history.Html5History());
-G__50873.setEnabled(true);
+frontend.routing._goog_history = (function (){var G__54333 = (new goog.history.Html5History());
+G__54333.setEnabled(true);
 
-return G__50873;
+return G__54333;
 })();
 }
 frontend.routing._STAR__history_events_enabled_QMARK__STAR_ = true;
@@ -117,13 +117,13 @@ var this__17365__auto____$1 = this;
 return cljs.core._lookup.call(null,this__17365__auto____$1,k__17366__auto__,null);
 });
 
-frontend.routing.History.prototype.cljs$core$ILookup$_lookup$arity$3 = (function (this__17367__auto__,k50876,else__17368__auto__){
+frontend.routing.History.prototype.cljs$core$ILookup$_lookup$arity$3 = (function (this__17367__auto__,k54336,else__17368__auto__){
 var self__ = this;
 var this__17367__auto____$1 = this;
-var G__50878 = k50876;
-switch (G__50878) {
+var G__54338 = k54336;
+switch (G__54338) {
 default:
-return cljs.core.get.call(null,self__.__extmap,k50876,else__17368__auto__);
+return cljs.core.get.call(null,self__.__extmap,k54336,else__17368__auto__);
 
 }
 });
@@ -141,10 +141,10 @@ return cljs.core.pr_sequential_writer.call(null,writer__17380__auto__,pr_pair__1
 
 frontend.routing.History.prototype.cljs$core$IIterable$ = true;
 
-frontend.routing.History.prototype.cljs$core$IIterable$_iterator$arity$1 = (function (G__50875){
+frontend.routing.History.prototype.cljs$core$IIterable$_iterator$arity$1 = (function (G__54335){
 var self__ = this;
-var G__50875__$1 = this;
-return (new cljs.core.RecordIter((0),G__50875__$1,0,cljs.core.PersistentVector.EMPTY,cljs.core._iterator.call(null,self__.__extmap)));
+var G__54335__$1 = this;
+return (new cljs.core.RecordIter((0),G__54335__$1,0,cljs.core.PersistentVector.EMPTY,cljs.core._iterator.call(null,self__.__extmap)));
 });
 
 frontend.routing.History.prototype.cljs$core$IMeta$_meta$arity$1 = (function (this__17363__auto__){
@@ -213,9 +213,9 @@ return new cljs.core.Keyword(null,"dispatch-signal","dispatch-signal",205544591)
 });})(this$__$1))
 ;
 goog.events.listen(frontend.routing._goog_history,goog.history.EventType.NAVIGATE,((function (this$__$1){
-return (function (p1__50874_SHARP_){
+return (function (p1__54334_SHARP_){
 if(cljs.core.truth_(frontend.routing._STAR__history_events_enabled_QMARK__STAR_)){
-return callback.call(null,p1__50874_SHARP_.token);
+return callback.call(null,p1__54334_SHARP_.token);
 } else {
 return null;
 }
@@ -235,11 +235,11 @@ frontend.routing.History.prototype.frontend$routing$HistoryProtocol$replace_toke
 var self__ = this;
 var this$__$1 = this;
 if(cljs.core.not_EQ_.call(null,new_token,frontend.routing.token.call(null,this$__$1))){
-var _STAR__history_events_enabled_QMARK__STAR_50879 = frontend.routing._STAR__history_events_enabled_QMARK__STAR_;
+var _STAR__history_events_enabled_QMARK__STAR_54339 = frontend.routing._STAR__history_events_enabled_QMARK__STAR_;
 frontend.routing._STAR__history_events_enabled_QMARK__STAR_ = false;
 
 try{return frontend.routing._goog_history.replaceToken(new_token);
-}finally {frontend.routing._STAR__history_events_enabled_QMARK__STAR_ = _STAR__history_events_enabled_QMARK__STAR_50879;
+}finally {frontend.routing._STAR__history_events_enabled_QMARK__STAR_ = _STAR__history_events_enabled_QMARK__STAR_54339;
 }} else {
 return null;
 }
@@ -255,12 +255,12 @@ return (new frontend.routing.History(self__.__meta,cljs.core.not_empty.call(null
 }
 });
 
-frontend.routing.History.prototype.cljs$core$IAssociative$_assoc$arity$3 = (function (this__17372__auto__,k__17373__auto__,G__50875){
+frontend.routing.History.prototype.cljs$core$IAssociative$_assoc$arity$3 = (function (this__17372__auto__,k__17373__auto__,G__54335){
 var self__ = this;
 var this__17372__auto____$1 = this;
-var pred__50880 = cljs.core.keyword_identical_QMARK_;
-var expr__50881 = k__17373__auto__;
-return (new frontend.routing.History(self__.__meta,cljs.core.assoc.call(null,self__.__extmap,k__17373__auto__,G__50875),null));
+var pred__54340 = cljs.core.keyword_identical_QMARK_;
+var expr__54341 = k__17373__auto__;
+return (new frontend.routing.History(self__.__meta,cljs.core.assoc.call(null,self__.__extmap,k__17373__auto__,G__54335),null));
 });
 
 frontend.routing.History.prototype.cljs$core$ISeqable$_seq$arity$1 = (function (this__17377__auto__){
@@ -269,10 +269,10 @@ var this__17377__auto____$1 = this;
 return cljs.core.seq.call(null,cljs.core.concat.call(null,cljs.core.PersistentVector.EMPTY,self__.__extmap));
 });
 
-frontend.routing.History.prototype.cljs$core$IWithMeta$_with_meta$arity$2 = (function (this__17364__auto__,G__50875){
+frontend.routing.History.prototype.cljs$core$IWithMeta$_with_meta$arity$2 = (function (this__17364__auto__,G__54335){
 var self__ = this;
 var this__17364__auto____$1 = this;
-return (new frontend.routing.History(G__50875,self__.__extmap,self__.__hash));
+return (new frontend.routing.History(G__54335,self__.__extmap,self__.__hash));
 });
 
 frontend.routing.History.prototype.cljs$core$ICollection$_conj$arity$2 = (function (this__17370__auto__,entry__17371__auto__){
@@ -303,29 +303,29 @@ frontend.routing.__GT_History = (function frontend$routing$__GT_History(){
 return (new frontend.routing.History(null,null,null));
 });
 
-frontend.routing.map__GT_History = (function frontend$routing$map__GT_History(G__50877){
-return (new frontend.routing.History(null,cljs.core.dissoc.call(null,G__50877),null));
+frontend.routing.map__GT_History = (function frontend$routing$map__GT_History(G__54337){
+return (new frontend.routing.History(null,cljs.core.dissoc.call(null,G__54337),null));
 });
 
 /**
- * Sets initial token.
+ * Sets ::token to empty string if component didn't already set it.
  */
 frontend.routing._wrap_init = (function frontend$routing$_wrap_init(component_init){
 return (function() { 
 var frontend$routing$_wrap_init_$_init__delegate = function (args){
-return cljs.core.assoc.call(null,cljs.core.apply.call(null,component_init,args),new cljs.core.Keyword("frontend.routing","token","frontend.routing/token",1365729519),"");
+return cljs.core.merge.call(null,new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword("frontend.routing","token","frontend.routing/token",1365729519),""], null),cljs.core.apply.call(null,component_init,args));
 };
 var frontend$routing$_wrap_init_$_init = function (var_args){
 var args = null;
 if (arguments.length > 0) {
-var G__50884__i = 0, G__50884__a = new Array(arguments.length -  0);
-while (G__50884__i < G__50884__a.length) {G__50884__a[G__50884__i] = arguments[G__50884__i + 0]; ++G__50884__i;}
-  args = new cljs.core.IndexedSeq(G__50884__a,0);
+var G__54344__i = 0, G__54344__a = new Array(arguments.length -  0);
+while (G__54344__i < G__54344__a.length) {G__54344__a[G__54344__i] = arguments[G__54344__i + 0]; ++G__54344__i;}
+  args = new cljs.core.IndexedSeq(G__54344__a,0);
 } 
 return frontend$routing$_wrap_init_$_init__delegate.call(this,args);};
 frontend$routing$_wrap_init_$_init.cljs$lang$maxFixedArity = 0;
-frontend$routing$_wrap_init_$_init.cljs$lang$applyTo = (function (arglist__50885){
-var args = cljs.core.seq(arglist__50885);
+frontend$routing$_wrap_init_$_init.cljs$lang$applyTo = (function (arglist__54345){
+var args = cljs.core.seq(arglist__54345);
 return frontend$routing$_wrap_init_$_init__delegate(args);
 });
 frontend$routing$_wrap_init_$_init.cljs$core$IFn$_invoke$arity$variadic = frontend$routing$_wrap_init_$_init__delegate;
@@ -349,11 +349,11 @@ return reagent.core.create_class.call(null,new cljs.core.PersistentArrayMap(null
 return new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"span","span",1394872991)], null);
 }),new cljs.core.Keyword(null,"component-did-mount","component-did-mount",-1126910518),(function (){
 return frontend.routing.replace_token.call(null,history,token);
-}),new cljs.core.Keyword(null,"component-will-update","component-will-update",335247566),(function (_,p__50888){
-var vec__50889 = p__50888;
-var ___$1 = cljs.core.nth.call(null,vec__50889,(0),null);
-var _history = cljs.core.nth.call(null,vec__50889,(1),null);
-var token__$1 = cljs.core.nth.call(null,vec__50889,(2),null);
+}),new cljs.core.Keyword(null,"component-will-update","component-will-update",335247566),(function (_,p__54348){
+var vec__54349 = p__54348;
+var ___$1 = cljs.core.nth.call(null,vec__54349,(0),null);
+var _history = cljs.core.nth.call(null,vec__54349,(1),null);
+var token__$1 = cljs.core.nth.call(null,vec__54349,(2),null);
 return frontend.routing.replace_token.call(null,history,token__$1);
 })], null));
 });
@@ -371,38 +371,38 @@ return new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMP
 frontend.routing._wrap_control = (function frontend$routing$_wrap_control(component_control){
 return (function frontend$routing$_wrap_control_$_control(model,signal,dispatch){
 try{if((cljs.core.vector_QMARK_.call(null,signal)) && ((cljs.core.count.call(null,signal) === 2))){
-try{var signal_0__50906 = cljs.core.nth.call(null,signal,(0));
-if(cljs.core.keyword_identical_QMARK_.call(null,signal_0__50906,new cljs.core.Keyword("frontend.routing","on-navigate","frontend.routing/on-navigate",1475147406))){
+try{var signal_0__54366 = cljs.core.nth.call(null,signal,(0));
+if(cljs.core.keyword_identical_QMARK_.call(null,signal_0__54366,new cljs.core.Keyword("frontend.routing","on-navigate","frontend.routing/on-navigate",1475147406))){
 var token = cljs.core.nth.call(null,signal,(1));
 return dispatch.call(null,new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword("frontend.routing","-set-token","frontend.routing/-set-token",-1743880442),token], null));
 } else {
 throw cljs.core.match.backtrack;
 
 }
-}catch (e50909){if((e50909 instanceof Error)){
-var e__18365__auto__ = e50909;
+}catch (e54369){if((e54369 instanceof Error)){
+var e__18365__auto__ = e54369;
 if((e__18365__auto__ === cljs.core.match.backtrack)){
 throw cljs.core.match.backtrack;
 } else {
 throw e__18365__auto__;
 }
 } else {
-throw e50909;
+throw e54369;
 
 }
 }} else {
 throw cljs.core.match.backtrack;
 
 }
-}catch (e50908){if((e50908 instanceof Error)){
-var e__18365__auto__ = e50908;
+}catch (e54368){if((e54368 instanceof Error)){
+var e__18365__auto__ = e54368;
 if((e__18365__auto__ === cljs.core.match.backtrack)){
 return component_control.call(null,model,signal,dispatch);
 } else {
 throw e__18365__auto__;
 }
 } else {
-throw e50908;
+throw e54368;
 
 }
 }});
@@ -413,38 +413,38 @@ throw e50908;
 frontend.routing._wrap_reconcile = (function frontend$routing$_wrap_reconcile(component_reconcile){
 return (function frontend$routing$_wrap_reconcile_$_reconcile(model,action){
 try{if((cljs.core.vector_QMARK_.call(null,action)) && ((cljs.core.count.call(null,action) === 2))){
-try{var action_0__50926 = cljs.core.nth.call(null,action,(0));
-if(cljs.core.keyword_identical_QMARK_.call(null,action_0__50926,new cljs.core.Keyword("frontend.routing","-set-token","frontend.routing/-set-token",-1743880442))){
+try{var action_0__54386 = cljs.core.nth.call(null,action,(0));
+if(cljs.core.keyword_identical_QMARK_.call(null,action_0__54386,new cljs.core.Keyword("frontend.routing","-set-token","frontend.routing/-set-token",-1743880442))){
 var token = cljs.core.nth.call(null,action,(1));
 return cljs.core.assoc.call(null,model,new cljs.core.Keyword("frontend.routing","token","frontend.routing/token",1365729519),token);
 } else {
 throw cljs.core.match.backtrack;
 
 }
-}catch (e50929){if((e50929 instanceof Error)){
-var e__18365__auto__ = e50929;
+}catch (e54389){if((e54389 instanceof Error)){
+var e__18365__auto__ = e54389;
 if((e__18365__auto__ === cljs.core.match.backtrack)){
 throw cljs.core.match.backtrack;
 } else {
 throw e__18365__auto__;
 }
 } else {
-throw e50929;
+throw e54389;
 
 }
 }} else {
 throw cljs.core.match.backtrack;
 
 }
-}catch (e50928){if((e50928 instanceof Error)){
-var e__18365__auto__ = e50928;
+}catch (e54388){if((e54388 instanceof Error)){
+var e__18365__auto__ = e54388;
 if((e__18365__auto__ === cljs.core.match.backtrack)){
 return component_reconcile.call(null,model,action);
 } else {
 throw e__18365__auto__;
 }
 } else {
-throw e50928;
+throw e54388;
 
 }
 }});
@@ -452,10 +452,11 @@ throw e50928;
 /**
  * Middlware keeps browser url bar in sync with model.
  *   Catches [::on-navigate <token>] signal, updates ::token in model.
- *   In order to start sending signals invoke start-signaling after component is connected.
+ *   In order to start sending ::on-navigate signals invoke (start-signaling history component) after component is connected.
+ *   Component can set initial ::token in its (init).
  */
 frontend.routing.wrap = (function frontend$routing$wrap(spec,history){
 return cljs.core.update.call(null,cljs.core.update.call(null,cljs.core.update.call(null,cljs.core.update.call(null,cljs.core.update.call(null,spec,new cljs.core.Keyword(null,"init","init",-1875481434),frontend.routing._wrap_init),new cljs.core.Keyword(null,"view-model","view-model",-895405675),frontend.routing._wrap_view_model),new cljs.core.Keyword(null,"view","view",1247994814),frontend.routing._wrap_view,history),new cljs.core.Keyword(null,"control","control",1892578036),frontend.routing._wrap_control),new cljs.core.Keyword(null,"reconcile","reconcile",-728661830),frontend.routing._wrap_reconcile);
 });
 
-//# sourceMappingURL=routing.js.map?rel=1452861556530
+//# sourceMappingURL=routing.js.map?rel=1452862423515
