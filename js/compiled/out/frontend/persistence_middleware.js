@@ -37,38 +37,38 @@ return component_control.call(null,new_model,signal,dispatch_and_save);
 frontend.persistence_middleware._wrap_reconcile = (function frontend$persistence_middleware$_wrap_reconcile(component_reconcile){
 return (function frontend$persistence_middleware$_wrap_reconcile_$_reconcile(model,action){
 try{if((cljs.core.vector_QMARK_.call(null,action)) && ((cljs.core.count.call(null,action) === 2))){
-try{var action_0__24244 = cljs.core.nth.call(null,action,(0));
-if(cljs.core.keyword_identical_QMARK_.call(null,action_0__24244,new cljs.core.Keyword("frontend.persistence-middleware","-reset-from-storage","frontend.persistence-middleware/-reset-from-storage",635771804))){
+try{var action_0__24566 = cljs.core.nth.call(null,action,(0));
+if(cljs.core.keyword_identical_QMARK_.call(null,action_0__24566,new cljs.core.Keyword("frontend.persistence-middleware","-reset-from-storage","frontend.persistence-middleware/-reset-from-storage",635771804))){
 var data = cljs.core.nth.call(null,action,(1));
 return data;
 } else {
 throw cljs.core.match.backtrack;
 
 }
-}catch (e24247){if((e24247 instanceof Error)){
-var e__18366__auto__ = e24247;
-if((e__18366__auto__ === cljs.core.match.backtrack)){
+}catch (e24569){if((e24569 instanceof Error)){
+var e__23752__auto__ = e24569;
+if((e__23752__auto__ === cljs.core.match.backtrack)){
 throw cljs.core.match.backtrack;
 } else {
-throw e__18366__auto__;
+throw e__23752__auto__;
 }
 } else {
-throw e24247;
+throw e24569;
 
 }
 }} else {
 throw cljs.core.match.backtrack;
 
 }
-}catch (e24246){if((e24246 instanceof Error)){
-var e__18366__auto__ = e24246;
-if((e__18366__auto__ === cljs.core.match.backtrack)){
+}catch (e24568){if((e24568 instanceof Error)){
+var e__23752__auto__ = e24568;
+if((e__23752__auto__ === cljs.core.match.backtrack)){
 return component_reconcile.call(null,model,action);
 } else {
-throw e__18366__auto__;
+throw e__23752__auto__;
 }
 } else {
-throw e24246;
+throw e24568;
 
 }
 }});
@@ -81,4 +81,4 @@ frontend.persistence_middleware.wrap = (function frontend$persistence_middleware
 return cljs.core.update.call(null,cljs.core.update.call(null,spec,new cljs.core.Keyword(null,"control","control",1892578036),frontend.persistence_middleware._wrap_control,storage,key,blacklist),new cljs.core.Keyword(null,"reconcile","reconcile",-728661830),frontend.persistence_middleware._wrap_reconcile);
 });
 
-//# sourceMappingURL=persistence_middleware.js.map?rel=1452785554565
+//# sourceMappingURL=persistence_middleware.js.map?rel=1452962186575
