@@ -25,7 +25,7 @@ goog.addDependency("../frontend/ui.js", ['frontend.ui'], ['reagent.core', 'cljs.
 goog.addDependency("../frontend/devtools.js", ['frontend.devtools'], ['com.rpl.specter', 'frontend.persistence_middleware', 'reagent.core', 'cljs.core', 'frontend.ui', 'cljs.core.match']);
 goog.addDependency("../frontend/routing.js", ['frontend.routing'], ['reagent.core', 'cljs.core', 'goog.history.EventType', 'frontend.ui', 'goog.history.Html5History', 'cljs.core.match', 'goog.events']);
 goog.addDependency("../frontend/todos.js", ['frontend.todos'], ['com.rpl.specter', 'frontend.devtools', 'reagent.core', 'cljs.core', 'frontend.ui', 'frontend.routing', 'cljs.core.match']);
-goog.addDependency("../frontend/core.js", ['frontend.core'], ['frontend.persistence_middleware', 'hodgepodge.core', 'frontend.devtools', 'reagent.core', 'cljs.core', 'frontend.todos', 'frontend.ui', 'frontend.routing']);
+goog.addDependency("../prod/core.js", ['prod.core'], ['frontend.persistence_middleware', 'hodgepodge.core', 'frontend.devtools', 'reagent.core', 'cljs.core', 'frontend.todos', 'frontend.ui', 'frontend.routing']);
 goog.addDependency("../cljs/core/async/impl/protocols.js", ['cljs.core.async.impl.protocols'], ['cljs.core']);
 goog.addDependency("../cljs/core/async/impl/buffers.js", ['cljs.core.async.impl.buffers'], ['cljs.core', 'cljs.core.async.impl.protocols']);
 goog.addDependency("../cljs/core/async/impl/dispatch.js", ['cljs.core.async.impl.dispatch'], ['cljs.core', 'cljs.core.async.impl.buffers', 'goog.async.nextTick']);
@@ -39,4 +39,4 @@ goog.addDependency("../cljs/repl.js", ['cljs.repl'], ['cljs.core']);
 goog.addDependency("../figwheel/client/socket.js", ['figwheel.client.socket'], ['cljs.core', 'figwheel.client.utils', 'cljs.reader']);
 goog.addDependency("../figwheel/client/heads_up.js", ['figwheel.client.heads_up'], ['goog.string', 'cljs.core', 'cljs.core.async', 'figwheel.client.socket', 'clojure.string']);
 goog.addDependency("../figwheel/client.js", ['figwheel.client'], ['goog.userAgent.product', 'goog.Uri', 'cljs.core', 'cljs.core.async', 'figwheel.client.file_reloading', 'figwheel.client.utils', 'cljs.repl', 'figwheel.client.heads_up', 'figwheel.client.socket', 'clojure.string']);
-goog.addDependency("../figwheel/connect.js", ['figwheel.connect'], ['cljs.core', 'frontend.core', 'figwheel.client', 'figwheel.client.utils']);
+goog.addDependency("../figwheel/connect.js", ['figwheel.connect'], ['prod.core', 'cljs.core', 'figwheel.client', 'figwheel.client.utils']);

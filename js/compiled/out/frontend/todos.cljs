@@ -65,13 +65,17 @@
 
          [:on-update-field val] (dispatch [:update-field val])
          :on-add (dispatch :add)
+
          [:on-toggle id] (dispatch [:toggle id])
          :on-toggle-all (dispatch :toggle-all)
+
          [:on-start-editing id] (dispatch [:start-editing id])
          [:on-stop-editing id] (dispatch [:stop-editing id])
          [:on-cancel-editing id] (dispatch [:cancel-editing id])
          [:on-update-todo id val] (dispatch [:update-todo id val])
+
          [:on-remove id] (dispatch [:remove id])
+
          :on-clear-completed (dispatch :clear-completed)))
 
 ;;;;;;;;;;;;;;;;;;;;;;;; Reconcile
@@ -144,7 +148,8 @@
                        :key)]
     result
     (do
-      (.error js/console "Could not determine visibility for token" (pr-str (::routing/token model)))
+      ; we don't use .error because PhantomJS somehow stops on it on running testing
+      (.log js/console "ERROR: Could not determine visibility for token" (pr-str (::routing/token model)) ". Will use some default visibility.")
       (-> -visibility-spec first :key))))
 
 (defn view-model
@@ -270,9 +275,11 @@
       [-view-footer @active-count @has-completed-todos? @visibility dispatch]])])
 
 ;;;;;;;;;;;;;;;;;;;;;;;; Spec
-(def spec
-  {:init       init
-   :view-model view-model
-   :view       view
-   :control    control
-   :reconcile  reconcile})
+(defn new-spec
+  [history]
+  (-> {:init       init
+       :view-model view-model
+       :view       view
+       :control    control
+       :reconcile  reconcile}
+      (routing/wrap history)))
