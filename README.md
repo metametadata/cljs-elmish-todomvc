@@ -4,6 +4,8 @@
 
 It's a follow-up to [cljs-elmish-examples](https://github.com/metametadata/cljs-elmish-examples).
 
+See the pattern explored further in [reagent-mvsa](https://github.com/metametadata/reagent-mvsa).
+
 ## Highlights
 * Time traveling debugger (devtools) with persistence and ability to enable/disable any action (inspired by 
 [redux-devtools](https://github.com/gaearon/redux-devtools)).
