@@ -4,7 +4,7 @@
 
 It's a follow-up to [cljs-elmish-examples](https://github.com/metametadata/cljs-elmish-examples).
 
-See the pattern explored further in [reagent-mvsa](https://github.com/metametadata/reagent-mvsa).
+See the pattern explored further in [Carry](https://github.com/metametadata/carry) framework.
 
 ## Highlights
 * Time traveling debugger (devtools) with persistence and ability to enable/disable any action (inspired by 
